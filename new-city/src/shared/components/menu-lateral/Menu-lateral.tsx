@@ -49,5 +49,58 @@ export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
   );
 }; // o primeiro box e parta a fastar a home o segundo e para deixar dentro o que quiser
 
-// <Drawer open = {true} variant="persistent" > //3 opem e para abrir na lateral, variant e para ser flexivel aberto ou fechado
+// <Drawer open = {true} variant="persistent" > //3 open e para abrir na lateral, variant e para ser flexivel aberto ou fechado
 // <Box height='100vh' marginLeft={theme.spacing(28)} > //3 1 = 4px e por isso que usa theme.spacing(28) e igual a 112 px para a direita etão os itens da home fica distate da barra lateral
+/*
+  <Box flex={1}>
+            <List component="nav">
+              <ListItemButton>
+                <ListItemIcon>
+                  <Icon>
+                    home // 3 toda essa estilização de de um componete do mui que o menu lateral, 
+                  </Icon>
+                </ListItemIcon>
+                <ListItemText primary="Menu inicial" />
+              </ListItemButton>
+            </List>
+          </Box>
+*/  
+ // 1e uma lista e uma lista = https://mui.com/material-ui/react-list/ no menu select
+/*
+  return (
+    <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+      <List component="nav" aria-label="main mailbox folders">// 1 começa aqui
+        <ListItemButton
+          selected={selectedIndex === 0}
+          onClick={(event) => handleListItemClick(event, 0)}>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Inbox" />
+        </ListItemButton> //3 termina aqui
+        <ListItemButton
+          selected={selectedIndex === 1}
+          onClick={(event) => handleListItemClick(event, 1)}>
+          <ListItemIcon>
+            <DraftsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Drafts" />
+        </ListItemButton>
+      </List>
+      <Divider />
+      <List component="nav" aria-label="secondary mailbox folder">
+        <ListItemButton
+          selected={selectedIndex === 2}
+          onClick={(event) => handleListItemClick(event, 2)}>
+          <ListItemText primary="Trash" />
+        </ListItemButton>
+        <ListItemButton
+          selected={selectedIndex === 3}
+          onClick={(event) => handleListItemClick(event, 3)}>
+          <ListItemText primary="Spam" />
+        </ListItemButton>
+      </List>
+    </Box>
+  );
+}
+*/
