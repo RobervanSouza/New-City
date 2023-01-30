@@ -4,6 +4,9 @@ npm install @mui/material @emotion/react @emotion/styled
 
 npm install @fontsource/roboto
 
+instalar icons
+
+npm init @eslint/config
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
