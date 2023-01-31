@@ -4,7 +4,7 @@ import { LayoutePages } from "../../shared/layouts"
 export const DashBoard = () => {
 
     return (
-        <LayoutePages titulo="Pagina Inicial "> 
+        <LayoutePages titulo="Pagina Inicial " barraDeFerramentas={<>Barra de ferramnetas</>}> 
             testando
 
         </LayoutePages>
