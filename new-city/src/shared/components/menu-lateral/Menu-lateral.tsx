@@ -1,15 +1,53 @@
-import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useTheme } from "@mui/material";
+import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
+import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
+import { useDrawerContext } from "../../contexts";
 
 interface Ichildren {
   children: React.ReactNode;
 }
+interface IListeLinkProps{
+   label:string, // texto na opção de menu
+   icons:string, // icons
+   to: string,// navegação
+   onClick: (() => void) | undefined;
+}
+const ListItemLink : React.FC <IListeLinkProps> = ({ icons, label, onClick, to }) => {
+ 
+   const  navigate = useNavigate(); 
+
+   const path = useResolvedPath(to)// deixa configuração rara as rotas usando em baixo
+   const match = useMatch({path: path.pathname, end: false});// verifica se a rota esta selecionada ou não
+
+
+  const handleClick = () => {
+    navigate(to);
+    onClick?.(); // para saber se e undefined oo void
+  }
+
+  return (
+    <ListItemButton selected={!!match} onClick={handleClick} >
+      <ListItemIcon>
+        <Icon>{icons}</Icon>
+      </ListItemIcon>
+      <ListItemText primary={label} />
+    </ListItemButton>
+  );
+}
 
 export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
   const theme = useTheme();
+
+  const smDown = useMediaQuery(theme.breakpoints.down('sm')) // down tela menor
+ 
+  const { isdrawerOpen, toggleDrawerOpen, drawerOptions} = useDrawerContext();
+
   return (
     <>
-      <Drawer variant="permanent">
+      <Drawer
+        open={isdrawerOpen}
+        variant={smDown ? "temporary" : "permanent"}
+        onClose={toggleDrawerOpen}>
         <Box
           width={theme.spacing(18)}
           height="100%"
@@ -30,24 +68,37 @@ export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
           <Divider />
           <Box flex={1}>
             <List component="nav">
-              <ListItemButton>
-                <ListItemIcon>
-                  <Icon>
-                    home
-                  </Icon>
-                </ListItemIcon>
-                <ListItemText primary="Menu inicial" />
-              </ListItemButton>
+              {drawerOptions.map((drawerOptions) => (
+                <ListItemLink
+                  key={drawerOptions.path}
+                  icons={drawerOptions.icons}
+                  label={drawerOptions.label}
+                  to={drawerOptions.path}
+                  onClick={smDown ? toggleDrawerOpen : undefined} // quando clica em pagina inicial elelescond o draw ou vice versa
+                />
+              ))}
             </List>
           </Box>
         </Box>
       </Drawer>
-      <Box height="100vh" marginLeft={theme.spacing(28)}>
+      <Box height="100vh" marginLeft={smDown ? 0 : theme.spacing(28)}>
         {children}
       </Box>
     </> //o (<> fragmente e para aceitar do lado o menu lateral, se não colocar não tem como aceitar)
   );
-}; // o primeiro box e parta a fastar a home o segundo e para deixar dentro o que quiser
+}; 
+
+
+
+
+
+
+
+
+
+
+
+// o primeiro box e parta a fastar a home o segundo e para deixar dentro o que quiser
 
 // <Drawer open = {true} variant="persistent" > //3 open e para abrir na lateral, variant e para ser flexivel aberto ou fechado
 // <Box height='100vh' marginLeft={theme.spacing(28)} > //3 1 = 4px e por isso que usa theme.spacing(28) e igual a 112 px para a direita etão os itens da home fica distate da barra lateral
