@@ -1,16 +1,16 @@
-import { BarraDeFerramentas } from "../../shared/components";
+import { FerramentasDaListagem } from "../../shared/components";
 import { LayoutePages } from "../../shared/layouts";
 
 export const DashBoard = () => {
   return (
     <LayoutePages
       titulo="Pagina Inicial "
-      barraDeFerramentas={(
-        <BarraDeFerramentas
-        mostrarInputBusca //motra a barra de pesquisa
-        textoBotaoVovo="nova"
+      barraDeFerramentas={
+        <FerramentasDaListagem
+          mostrarInputBusca //motra a barra de pesquisa
+          textoBotaoVovo="nova"
         />
-      )}>
+      }>
       testando
     </LayoutePages>
   );
