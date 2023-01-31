@@ -1,7 +1,7 @@
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
-import { useDrawerContext } from "../../contexts";
+import { useDrawerContext, useThemeContext } from "../../contexts";
 
 interface Ichildren {
   children: React.ReactNode;
@@ -42,6 +42,8 @@ export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
  
   const { isdrawerOpen, toggleDrawerOpen, drawerOptions} = useDrawerContext();
 
+  const {toggleTheme} = useThemeContext();
+
   return (
     <>
       <Drawer
@@ -49,7 +51,7 @@ export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
         variant={smDown ? "temporary" : "permanent"}
         onClose={toggleDrawerOpen}>
         <Box
-          width={theme.spacing(28)} // largura barra 
+          width={theme.spacing(28)} // largura barra
           height="100%"
           display="flex"
           flexDirection="column">
@@ -66,7 +68,9 @@ export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
             />
           </Box>
           <Divider />
-          <Box flex={1}>
+          <Box
+            flex={1} // ocupa todo o espaço  da barra
+          >
             <List component="nav">
               {drawerOptions.map((drawerOptions) => (
                 <ListItemLink
@@ -77,6 +81,16 @@ export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
                   onClick={smDown ? toggleDrawerOpen : undefined} // quando clica em pagina inicial elelescond o draw ou vice versa
                 />
               ))}
+            </List>
+          </Box>
+          <Box>
+            <List component="nav">
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemIcon>
+                  <Icon>bedtime</Icon>
+                </ListItemIcon>
+                <ListItemText primary='Alternar tema' />
+              </ListItemButton>
             </List>
           </Box>
         </Box>

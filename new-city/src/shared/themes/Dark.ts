@@ -4,6 +4,7 @@ import {  lime, red,} from "@mui/material/colors";
 
 export const DarkTheme = createTheme({
   palette: {
+    mode: 'dark', // deixa os botões com a cor branca quando e acionado o dark
     primary: {
       main:red[400],
       dark: red[800],
@@ -20,5 +21,10 @@ export const DarkTheme = createTheme({
       default: "#303134",
       paper: "#202124",
     },
+  },
+  typography: {
+     allVariants:{
+      color: 'white'
+     }
   },
 });
