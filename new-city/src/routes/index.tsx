@@ -1,12 +1,13 @@
-import { Button } from '@mui/material';
+
 import { useEffect } from 'react';
 import { Routes, Route, Navigate} from 'react-router-dom';
+import { DashBoard } from '../pages';
 import { useDrawerContext } from '../shared/contexts';
 
 
 
 export const AppRouter = () => {
-     const { toggleDrawerOpen, setDrawerOptions } = useDrawerContext();
+     const {setDrawerOptions } = useDrawerContext();
 
     useEffect(() => {
         setDrawerOptions([
@@ -17,19 +18,14 @@ export const AppRouter = () => {
         }
 ]);
           
- }, []);
+ }, [setDrawerOptions]);
 
     return (
       <Routes>
         <Route
           path="/pagina-inicial"
           element={
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={toggleDrawerOpen}>
-              Open/Close
-            </Button>
+           <DashBoard/>
           }
         />
         <Route

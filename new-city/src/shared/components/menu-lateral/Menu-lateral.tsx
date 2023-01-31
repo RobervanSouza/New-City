@@ -22,7 +22,7 @@ const ListItemLink : React.FC <IListeLinkProps> = ({ icons, label, onClick, to }
 
   const handleClick = () => {
     navigate(to);
-    onClick?.(); // para saber se e undefined oo void
+    onClick?.(); // para saber se e undefined ou void
   }
 
   return (
@@ -49,7 +49,7 @@ export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
         variant={smDown ? "temporary" : "permanent"}
         onClose={toggleDrawerOpen}>
         <Box
-          width={theme.spacing(18)}
+          width={theme.spacing(28)} // largura barra 
           height="100%"
           display="flex"
           flexDirection="column">
