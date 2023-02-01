@@ -6,8 +6,11 @@ export const DashBoard = () => {
     <LayoutePages
       titulo="Pagina Inicial "
       barraDeFerramentas={
-        <FerramentasDetalhes mostrarBotaoSalvaFechar
-        mostrarBotaoSalvaFecharCarregando />
+        <FerramentasDetalhes
+         mostrarBotaoSalvaFechar
+        mostrarBotaoNovo
+        mostrarBotaoSalvaFecharCarregando
+     />
       }>
       testando
     </LayoutePages>
