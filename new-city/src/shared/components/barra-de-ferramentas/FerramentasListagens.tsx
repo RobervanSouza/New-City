@@ -2,7 +2,7 @@ import { Box, Button, Icon, Paper, TextField, useTheme } from "@mui/material";
 import { Enviroment } from "../../environment";
 
 interface IFerramentasListagemProps {
-  textobusca?: string;
+  textoBusca?: string;
   mostrarInputBusca?: boolean;
   mudarTextoBusca?: (novoTexto: string) => void;
   textoBotaoVovo?: string;
@@ -13,7 +13,7 @@ interface IFerramentasListagemProps {
 export const FerramentasDaListagem: React.FC<IFerramentasListagemProps> = ({
   mostrarInputBusca = false,
   mudarTextoBusca,
-  textobusca = "",
+  textoBusca = "",
   clicarNovo,
   textoBotaoVovo = "Novo",
   mostrarBotaoNovo = true,
@@ -32,7 +32,7 @@ export const FerramentasDaListagem: React.FC<IFerramentasListagemProps> = ({
       {mostrarInputBusca && (
         <TextField
           size="small"
-          value={textobusca}
+          value={textoBusca}
           onChange={(e) => mudarTextoBusca?.(e.target.value)} // evento
           placeholder={Enviroment.INPUT_DE_BUSCA}
         />
