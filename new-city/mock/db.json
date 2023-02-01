@@ -1,0 +1,16 @@
+{
+    "pessoas": [
+        {
+            "id": 1,
+            "nome": "robervan",
+            "curso": "react",
+            "dia": 1
+        },
+        {
+            "id": 2,
+            "nome": "robeasdrvan",
+            "curso": "reasdact",
+            "dia": 1
+        }
+    ]
+}

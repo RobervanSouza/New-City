@@ -8,6 +8,10 @@ instalar icons
 
 npm init @eslint/config
 
+npm add -D json-server
+
+npm add -D axios
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
