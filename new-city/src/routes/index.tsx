@@ -27,6 +27,7 @@ export const AppRouter = () => {
     <Routes>
       <Route path="/pagina-inicial" element={<DashBoard />} />
       <Route path="/pessoas" element={<Pessoas/>} />
+      <Route path="/pessoas/detalhes/:id" element= {<p>detalhes</p>} />
       <Route
       //  path="*"  element={<Navigate to={"/pagina-inicial"} />} //e para renderizar a pagina inicial, caso coloque outros nomes na pagina
       />
