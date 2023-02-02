@@ -85,6 +85,7 @@ export const Pessoas: React.FC = () => {
           <FerramentasDaListagem
             mostrarInputBusca // poderia colocar true, mas o react intende que e true
             textoBotaoVovo="Nova"
+            clicarNovo={() => navigate('/pessoas/detalhes/nova')}
             textoBusca={busca}
             mudarTextoBusca={(texto) =>
               setSerchParams({ busca: texto, pagina: "1" }, { replace: true })
