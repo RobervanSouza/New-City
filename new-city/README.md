@@ -11,6 +11,7 @@ npm init @eslint/config
 npm add -D json-server
 
 npm add -D axios
+npm i @unform/web @unform/core // biblioteco do diego para formulario
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
