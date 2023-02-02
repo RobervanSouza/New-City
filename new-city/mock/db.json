@@ -1,151 +1,88 @@
 {
-    "pessoas": [
-        {
-            "id": 1,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan "
-        },
-        {
-            "id": 2,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "alice"
-        },
-        {
-            "id": 3,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "auriene"
-        },
-        {
-            "id": 4,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "beatriz"
-        },
-        {
-            "id": 5,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan rsdrsr"
-        },
-        {
-            "id": 6,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan rsdrsr"
-        },
-        {
-            "id": 11,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan "
-        },
-        {
-            "id": 12,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "alice"
-        },
-        {
-            "id": 13,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "auriene"
-        },
-        {
-            "id": 14,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "beatriz"
-        },
-        {
-            "id": 15,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan rsdrsr"
-        },
-        {
-            "id": 16,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan rsdrsr"
-        },
-      
-        {
-            "id": 1,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan "
-        },
-        {
-            "id": 2,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "alice"
-        },
-        {
-            "id": 3,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "auriene"
-        },
-        {
-            "id": 4,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "beatriz"
-        },
-        {
-            "id": 5,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan rsdrsr"
-        },
-        {
-            "id": 6,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan rsdrsr"
-        },
-        {
-            "id": 11,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan "
-        },
-        {
-            "id": 12,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "alice"
-        },
-        {
-            "id": 13,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "auriene"
-        },
-        {
-            "id": 14,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "beatriz"
-        },
-        {
-            "id": 15,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan rsdrsr"
-        },
-        {
-            "id": 16,
-            "email": "react@gmail",
-            "cidadeID": 1,
-            "nome": "robervan rsdrsr"
-        }
-      
-      
-    ]
+  "pessoas": [
+    {
+      "id": 13,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "auriene"
+    },
+    {
+      "id": 14,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "beatriz"
+    },
+    {
+      "id": 15,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "robervan rsdrsr"
+    },
+    {
+      "id": 16,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "robervan rsdrsr"
+    },
+    {
+      "id": 1,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "robervan "
+    },
+    {
+      "id": 4,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "beatriz"
+    },
+    {
+      "id": 5,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "robervan rsdrsr"
+    },
+    {
+      "id": 6,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "robervan rsdrsr"
+    },
+    {
+      "id": 11,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "robervan "
+    },
+    {
+      "id": 12,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "alice"
+    },
+    {
+      "id": 13,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "auriene"
+    },
+    {
+      "id": 14,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "beatriz"
+    },
+    {
+      "id": 15,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "robervan rsdrsr"
+    },
+    {
+      "id": 16,
+      "email": "react@gmail",
+      "cidadeID": 1,
+      "nome": "robervan rsdrsr"
+    }
+  ]
 }

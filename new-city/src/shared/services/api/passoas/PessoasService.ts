@@ -47,7 +47,7 @@ try {
 }
 const getById = async (id: number): Promise<IDetalhesPessoas | Error> =>{
 try {
-     const { data} = await Api.get(`/pessoas${id}`);
+     const { data} = await Api.get(`/pessoas/${id}`);
      if(data){
         return data;
      }
@@ -77,9 +77,9 @@ try {
 }
 }
 
-const updateById = async (id: number, dados: IDetalhesPessoas): Promise<any> =>{
+const updateById = async (id: number, dados: IDetalhesPessoas): Promise<void | Error> =>{
 try {
-      await Api.put(`/pessoas${id}`,dados);
+      await Api.put(`/pessoas/${id}`,dados);
      
      return new Error("Erro ao atualizar Registros");
 } catch (error) {
@@ -89,15 +89,16 @@ try {
         );
 }
 }
-const deleteById = async (id: number): Promise<any> =>{
-try {
-     await Api.delete(`/pessoas${id}`);
-
-     return new Error("Erro ao consultar Id Registro");
-} catch (error) {
-    
-}
-}
+const deleteById = async (id: number): Promise<void | Error> => {
+  try {
+    await (await Api.delete(`/pessoas/${id}`));
+  } catch (error) {
+      console.error(error);
+      return new Error(
+        (error as { message: string }).message || "Erro ao apagar o registro."
+      );
+  }
+};
 
 
 export const PessoasService =  {

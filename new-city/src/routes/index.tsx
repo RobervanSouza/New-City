@@ -6,6 +6,7 @@ import { useDrawerContext } from "../shared/contexts";
 
 export const AppRouter = () => {
   const { setDrawerOptions } = useDrawerContext();
+  
 
   useEffect(() => {
     // com o use effect conforme foi criado so em duplicar ja passa os dados do menu lateral e navega para a rota, ja cria o icone no menu
