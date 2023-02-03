@@ -7,14 +7,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FerramentasDetalhes } from "../../shared/components";
 import { useVform, FormTexteField, IValidError} from "../../shared/forms";
 import { LayoutePages } from "../../shared/layouts";
-import { PessoasService } from "../../shared/services/api/passoas/PessoasService";
+import { CidadesService } from "../../shared/services/api/cidades/CidadecService";
 import * as yup from "yup";
 
 // para fazer um formulario dcom objeto
 interface IFormDados {
   // dados que vem do formulario
-  email: string;
-  cidadeID: number;
+
   nome: string;
 }
 const formValidateSchema: yup.SchemaOf<IFormDados> = yup.object().shape({
@@ -24,14 +23,10 @@ const formValidateSchema: yup.SchemaOf<IFormDados> = yup.object().shape({
       .string()
       .required('')
       .min(3), //obrigatorio se sting, minimo ser tres caracteres
-    email: yup
-      .string()
-      .required()
-      .email(), // tem que ser um email valido
-    cidadeID: yup.number().required(),
+  
   });
 
-export const DetalhesPessoas: React.FC = () => {
+export const DetalhesCidades: React.FC = () => {
   const { id = "nova" } = useParams<"id">(); // esse id e mesmo das rotas
 
   const navigate = useNavigate();
@@ -44,11 +39,11 @@ export const DetalhesPessoas: React.FC = () => {
     // pega os dados do back-end para tratar
     if (id !== "nova") { /// esse IF  e para editar um usuario
       setIsLoading(true);
-      PessoasService.getById(Number(id)).then((result) => {
+      CidadesService.getById(Number(id)).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
 
-          navigate("/pessoas"); // se der erro ao consultar registro volta paraa tela
+          navigate("/cidades"); // se der erro ao consultar registro volta paraa tela
         } else {
           setNome(result.nome);
           refForm.current?.setData(result);
@@ -57,8 +52,7 @@ export const DetalhesPessoas: React.FC = () => {
     } else{ // esse ELSE  e para novo usuario, so para limpar o formulario
       refForm.current?.setData({ // passa o formulario 
         nome: '', // passa vazio para que o formulario abra vazio
-        cidadeID: '',
-        email: '',
+    
       })
     }
 
@@ -72,23 +66,23 @@ export const DetalhesPessoas: React.FC = () => {
     formValidateSchema.validate(dados, { abortEarly: false }).then((dadosvalidados) => {// se der erro
       if (id === "nova") {
         // criando um registro novo
-        PessoasService.create(dadosvalidados).then((result) => {
+        CidadesService.create(dadosvalidados).then((result) => {
           // se der certo criar o usuario então manda para o resulte
           setIsLoading(false);
           if (result instanceof Error) {
             alert(result.message);
           } else {
             if (isSaveClose()) {
-              // quando clicar no botão salvar/fechar vai para pessoas
-              navigate("/pessoas");
+              // quando clicar no botão salvar/fechar vai para cidades
+              navigate("/cidades");
             } else {
-              navigate(`/pessoas/detalhes/${result}`); // com usuario criado então manda para o id dele.
+              navigate(`/cidades/detalhes/${result}`); // com usuario criado então manda para o id dele.
             }
           }
         });
       } else {
         // atualizar o registro
-        PessoasService.updateById(Number(id), {
+        CidadesService.updateById(Number(id), {
           id: Number(id),
           ...dadosvalidados,
         }).then((result) => {
@@ -99,8 +93,8 @@ export const DetalhesPessoas: React.FC = () => {
             alert(result.message);
           } else {
             if (isSaveClose()) {
-              // quando clicar no botão salvar/fechar vai para pessoas
-              navigate("/pessoas");
+              // quando clicar no botão salvar/fechar vai para cidades
+              navigate("/cidades");
             }
           }
         });
@@ -124,12 +118,12 @@ export const DetalhesPessoas: React.FC = () => {
   const handleDelete = (id: number) => {
     // eslint-disable-next-line no-restricted-globals
     if (confirm("Realmente quer Deletar?")) {
-      PessoasService.deleteById(id).then((result) => {
+      CidadesService.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
           alert("Deletado com sucesso!!!");
-          navigate("/pessoas");
+          navigate("/cidades");
         }
       });
     }
@@ -144,10 +138,10 @@ export const DetalhesPessoas: React.FC = () => {
           mostrarBotaoApagar={id !== "nova"}
           mostrarBotaoSalvaFechar
           aoclicarApagar={() => handleDelete(Number(id))}
-          aoclicarNovo={() => navigate("/pessoas/detalhes/nova")}
+          aoclicarNovo={() => navigate("/cidades/detalhes/nova")}
           aoclicarSalvar={save} //passa FormHandles ou null, permite fase  sublimit
           aoclicarSalvarFechar={saveAndClose}
-          aoclicarVoltar={() => navigate("/pessoas")}
+          aoclicarVoltar={() => navigate("/cidades")}
         />
       }>
       <Form
@@ -164,7 +158,7 @@ export const DetalhesPessoas: React.FC = () => {
             {isLoading && (
               <Grid>
                 <Typography variant="h6" margin={2} alignItems="center">
-                  Dados do Usuario
+                  Dados da Cidade
                 </Typography>
               </Grid>
             )}
@@ -180,50 +174,18 @@ export const DetalhesPessoas: React.FC = () => {
               >
                 <FormTexteField
                   fullWidth
-                  label="Digite seu Nome"// texto em cima diferente do placeholder
+                  label="Digite da cidade"// texto em cima diferente do placeholder
                   onChange={e => setNome(e.target.value)}
                   name="nome"
                 />
               </Grid>
             </Grid>
 
-            <Grid container item direction="row" spacing={2}>
-              <Grid
-                item
-                xs={12} // android todo o espaço o total e 12
-                sm={12} // tablet
-                md={6} // desktop
-                lg={4} // larga
-                xl={2}>
-                <FormTexteField
-                  fullWidth
-                  label="Digite seu Email"
-                  
-                  name="email"
-                />
-              </Grid>
-            </Grid>
-
-            <Grid container item direction="row" spacing={2}>
-              <Grid
-                item
-                xs={12} // android todo o espaço o total e 12
-                sm={12} // tablet
-                md={6} // desktop
-                lg={4} // larga
-                xl={2}>
-                <FormTexteField
-                  fullWidth
-                  label="Digite sua Cidade ID"
-                  
-                  name="cidadeID"
-                />
-              </Grid>
-            </Grid>
+           
+           
           </Grid>
         </Box>
 
-        <button>teste</button>
       </Form>
     </LayoutePages>
   );

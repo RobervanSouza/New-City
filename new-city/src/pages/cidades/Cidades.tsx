@@ -19,11 +19,11 @@ import { Enviroment } from "../../shared/environment";
 import { useDebounce } from "../../shared/hooks";
 import { LayoutePages } from "../../shared/layouts";
 import {
-  IPessoas,
-  PessoasService,
-} from "../../shared/services/api/passoas/PessoasService";
+  ICidades,
+  CidadesService,
+} from "../../shared/services/api/cidades/CidadecService";
 
-export const Pessoas: React.FC = () => {
+export const Cidades: React.FC = () => {
   const { debounce } = useDebounce(); //
   const [searchParams, setSerchParams] = useSearchParams(); // essa função e para quando usuari for compartilha algum item ele poder enviar a URL  do item onde estava e não do site
   const busca = useMemo(() => {
@@ -35,7 +35,7 @@ export const Pessoas: React.FC = () => {
     return Number(searchParams.get("pagina") || "1"); // quantidade de paginas. inicia sempre em um
   }, [searchParams]);
 
-  const [rows, setRows] = useState<IPessoas[]>([]);
+  const [rows, setRows] = useState<ICidades[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [totalR, setTotalR] = useState(0);
 
@@ -43,15 +43,15 @@ export const Pessoas: React.FC = () => {
     setIsLoading(true); // se ouver atraso ele vai carregar os dados do back-end
     debounce(() => {
       // o then e quando o service retorna ele evai executar uma função
-      PessoasService.getAll(pagina, busca).then((result) => {
+      CidadesService.getAll(pagina, busca).then((result) => {
         setIsLoading(false); // quando tiver os dados não precisa carregar os dados novamente, se ja chegou aqui esta ok
-        // no resul passa as pessoas ou erro, no getall tem as propriedades de pages e filter, em pagem passa (10 em filter passa (busca)
+        // no resul passa as cidades ou erro, no getall tem as propriedades de pages e filter, em pagem passa (10 em filter passa (busca)
         if (result instanceof Error) {
           alert(result.message); // em caso de erro
         } else {
           // em caso de sucesso
           console.log(result);
-          setTotalR(result.totalPessoas);
+          setTotalR(result.totalCidades);
           setRows(result.data);
         }
       });
@@ -62,7 +62,7 @@ export const Pessoas: React.FC = () => {
   const handleDelete = (id: number) => {
     // eslint-disable-next-line no-restricted-globals
     if (confirm('Realmente quer apagar?')) {
-      PessoasService.deleteById(id).then(result => {
+      CidadesService.deleteById(id).then(result => {
         if (result instanceof Error) {
           alert(result.message);
         }else{
@@ -80,12 +80,12 @@ export const Pessoas: React.FC = () => {
   return (
     <>
       <LayoutePages
-        titulo="Pagina de Pessoas"
+        titulo="Pagina de Cidades"
         barraDeFerramentas={
           <FerramentasDaListagem
             mostrarInputBusca // poderia colocar true, mas o react intende que e true
             textoBotaoVovo="Nova"
-            clicarNovo={() => navigate("/pessoas/detalhes/nova")}
+            clicarNovo={() => navigate('/cidades/detalhes/nova')}
             textoBusca={busca}
             mudarTextoBusca={(texto) =>
               setSerchParams({ busca: texto, pagina: "1" }, { replace: true })
@@ -95,13 +95,13 @@ export const Pessoas: React.FC = () => {
         <TableContainer
           component={Paper}
           variant="outlined"
-          sx={{ marginLeft: 1, width: "auto" }}>
+          sx={{ m: 1, width: "auto" }}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell width={200}>Ações</TableCell>
+                <TableCell width={200} >Ações</TableCell>
                 <TableCell>Nome</TableCell>
-                <TableCell>Email</TableCell>
+                
               </TableRow>
             </TableHead>
             <TableBody>
@@ -111,14 +111,12 @@ export const Pessoas: React.FC = () => {
                     <Button size="small" onClick={() => handleDelete(row.id)}>
                       <Icon>delete</Icon>
                     </Button>
-                    <Button
-                      size="small"
-                      onClick={() => navigate(`/pessoas/detalhes/${row.id}`)}>
+                    <Button size="small" onClick={() => navigate(`/cidades/detalhes/${row.id}`)} >
                       <Icon>edite</Icon>
                     </Button>
                   </TableCell>
                   <TableCell>{row.nome}</TableCell>
-                  <TableCell>{row.email}</TableCell>
+                  
                 </TableRow>
               ))}
             </TableBody>

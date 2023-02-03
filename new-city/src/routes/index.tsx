@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Routes, Route} from "react-router-dom";
 import { DashBoard, DetalhesPessoas, Pessoas } from "../pages";
+import { Cidades } from "../pages/cidades/Cidades";
+import { DetalhesCidades } from "../pages/cidades/DetalhesCidades";
 import { useDrawerContext } from "../shared/contexts";
 
 
@@ -21,6 +23,11 @@ export const AppRouter = () => {
         label: "Pagina Pessoas",
         path: "/pessoas",
       },
+      {
+        icons: "location_city",
+        label: "Pagina Cidades",
+        path: "/cidades",
+      },
     ]);
   }, [setDrawerOptions]);
 
@@ -29,6 +36,9 @@ export const AppRouter = () => {
       <Route path="/pagina-inicial" element={<DashBoard />} />
       <Route path="/pessoas" element={<Pessoas/>} />
       <Route path="/pessoas/detalhes/:id" element= {<DetalhesPessoas/>} />
+
+      <Route path="/cidades" element={<Cidades/>} />
+      <Route path="/cidades/detalhes/:id" element= {<DetalhesCidades/>} />
       <Route
       //  path="*"  element={<Navigate to={"/pagina-inicial"} />} //e para renderizar a pagina inicial, caso coloque outros nomes na pagina
       />

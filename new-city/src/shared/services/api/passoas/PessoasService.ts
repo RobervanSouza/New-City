@@ -81,7 +81,7 @@ const updateById = async (id: number, dados: IDetalhesPessoas): Promise<void | E
 try {
       await Api.put(`/pessoas/${id}`,dados);
      
-     return new Error("Erro ao atualizar Registros");
+     return new Error("atualizado com sucesso");
 } catch (error) {
         console.error(error);
         return new Error(
