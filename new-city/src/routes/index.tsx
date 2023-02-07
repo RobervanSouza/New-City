@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Routes, Route} from "react-router-dom";
-import { DashBoard, DetalhesPessoas, Pessoas } from "../pages";
+import { DashBoard, Pessoas, DetalhesPessoas } from "../pages";
+
 import { Cidades } from "../pages/cidades/Cidades";
 import { DetalhesCidades } from "../pages/cidades/DetalhesCidades";
 import { useDrawerContext } from "../shared/contexts";

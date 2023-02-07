@@ -21,4 +21,10 @@ export const Enviroment = {
    */
 
   URL_BASE: "http://localhost:3001",
+
+  /**
+   * Não há cidades Cadastradas
+   */
+
+  LISTAGEM_VAZIA:"Não foi encontrado itens na Pagina",
 };

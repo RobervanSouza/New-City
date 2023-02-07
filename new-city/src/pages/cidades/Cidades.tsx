@@ -120,6 +120,9 @@ export const Cidades: React.FC = () => {
                 </TableRow>
               ))}
             </TableBody>
+            {totalR === 0 && !isLoading &&(
+              <caption>{Enviroment.LISTAGEM_DE_ITENS}</caption>
+            )}
             <TableFooter>
               {isLoading && (
                 <TableRow>

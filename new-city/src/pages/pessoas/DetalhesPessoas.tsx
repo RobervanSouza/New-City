@@ -9,6 +9,7 @@ import { useVform, FormTexteField, IValidError} from "../../shared/forms";
 import { LayoutePages } from "../../shared/layouts";
 import { PessoasService } from "../../shared/services/api/passoas/PessoasService";
 import * as yup from "yup";
+import { AutoCompleteCidades } from "./components/AutoCompleteCidades";
 
 // para fazer um formulario dcom objeto
 interface IFormDados {
@@ -67,7 +68,7 @@ export const DetalhesPessoas: React.FC = () => {
 
   const handleSave = (dados: IFormDados) => {
     // recebe os dados que vem do formulario de cadastro
-
+console.log(dados)
     // espera validar todos os campo de uma vez(abortEarly)
     formValidateSchema.validate(dados, { abortEarly: false }).then((dadosvalidados) => {// se der erro
       if (id === "nova") {
@@ -212,18 +213,12 @@ export const DetalhesPessoas: React.FC = () => {
                 md={6} // desktop
                 lg={4} // larga
                 xl={2}>
-                <FormTexteField
-                  fullWidth
-                  label="Digite sua Cidade ID"
-                  
-                  name="cidadeID"
-                />
+               
+              <AutoCompleteCidades />
               </Grid>
             </Grid>
           </Grid>
         </Box>
-
-        <button>teste</button>
       </Form>
     </LayoutePages>
   );
