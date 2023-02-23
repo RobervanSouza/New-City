@@ -118,6 +118,6 @@
     }
   ], 
   "auth":{
-    "accessToken": "aaa.bbb.ccc"
+      "accessToken": "aaaaaa.bbbbbbb.ccccccc"
   }
 }

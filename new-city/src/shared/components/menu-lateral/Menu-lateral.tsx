@@ -1,7 +1,7 @@
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
-import { useDrawerContext, useThemeContext } from "../../contexts";
+import { useAuthContext, useDrawerContext, useThemeContext } from "../../contexts";
 
 interface Ichildren {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ const ListItemLink : React.FC <IListeLinkProps> = ({ icons, label, onClick, to }
 
    const path = useResolvedPath(to)// deixa configuração rara as rotas usando em baixo
    const match = useMatch({path: path.pathname, end: false});// verifica se a rota esta selecionada ou não
-
+  
 
   const handleClick = () => {
     navigate(to);
@@ -37,12 +37,13 @@ const ListItemLink : React.FC <IListeLinkProps> = ({ icons, label, onClick, to }
 
 export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
   const theme = useTheme();
-
+  
   const smDown = useMediaQuery(theme.breakpoints.down('sm')) // down tela menor
  
   const { isdrawerOpen, toggleDrawerOpen, drawerOptions} = useDrawerContext();
 
   const {toggleTheme} = useThemeContext();
+  const {logout} = useAuthContext();
 
   return (
     <>
@@ -89,7 +90,15 @@ export const MenuLateral: React.FC<Ichildren> = ({ children }) => {
                 <ListItemIcon>
                   <Icon>bedtime</Icon>
                 </ListItemIcon>
-                <ListItemText primary='Alternar tema' />
+                <ListItemText primary="Alternar tema" />
+              </ListItemButton>
+            </List>
+            <List component="nav">
+              <ListItemButton onClick={logout}>
+                <ListItemIcon>
+                  <Icon>logout</Icon>
+                </ListItemIcon>
+                <ListItemText primary="Sair" />
               </ListItemButton>
             </List>
           </Box>
