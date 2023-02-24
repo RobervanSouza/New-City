@@ -1,5 +1,5 @@
 import { Autocomplete, CircularProgress, TextField } from "@mui/material";
-import { getValue } from "@mui/system";
+
 import { useField } from "@unform/core";
 import { useEffect, useMemo, useState } from "react";
 import { useDebounce } from "../../../shared/hooks";
@@ -15,7 +15,7 @@ interface ICarregandoProps {
     iscarregando?: boolean;
 }
 export const AutoCompleteCidades: React.FC<ICarregandoProps> = ({iscarregando = false}) => {
-    const {fieldName, clearError,defaultValue,error, registerField} = useField('cidadeID');
+    const {fieldName, clearError,error, registerField} = useField('cidadeID');
     const {debounce} = useDebounce();
     const [auto, setAuto] = useState<IAutoComplete[]>([]);
     const [isLoading, setLoading] = useState(false);
